@@ -52,8 +52,12 @@ function App() {
                   <Form.Control value={item.description} onChange={(e) => editItemDescription(index, e.target.value)} type="email" placeholder="Description" />
                 </Col>
     
-                <Col xs="4">
+                <Col xs="3">
                   <Form.Control value={item.amount} onChange={(e) => editItemAmount(index, e.target.value)} type="email" placeholder="Amount" />
+                </Col>
+
+                <Col xs="1">
+                  <Button className="w-100 align-top btn-danger fs-6 px-1">Remove</Button>
                 </Col>
               </Row>
             ))
