@@ -1,4 +1,5 @@
 import './App.css';
+import logo from './logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState, useEffect} from 'react';
 import {Container, Row, Col, Form, Button} from 'react-bootstrap';
@@ -40,7 +41,9 @@ function App() {
       <header className="App-header py-5"> 
         <Container>
           <Row className="mb-5">
-            <h1 className="mb-5">QUOTR</h1>
+            <Col>
+              <img src={logo} className="App-logo" alt="logo" />
+            </Col>
           </Row>
 
           <Row className="mb-4">
