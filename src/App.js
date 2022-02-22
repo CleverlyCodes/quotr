@@ -25,6 +25,10 @@ function App() {
     setItems(currentItems);
   }
 
+  function deleteItem(index) {
+    setItems(items.filter((item, i) => i !== index));
+  }
+
   function generateQuote() {
     console.log(items);  
   }
@@ -36,7 +40,7 @@ function App() {
       <header className="App-header py-5"> 
         <Container>
           <Row className="mb-5">
-            <h1 classNames="mb-5">QUOTR</h1>
+            <h1 className="mb-5">QUOTR</h1>
           </Row>
 
           <Row className="mb-4">
@@ -47,7 +51,7 @@ function App() {
 
           {
             items.map((item, index) => (
-              <Row className="mt-3">
+              <Row key={index} className="mt-3">
                 <Col xs="8">
                   <Form.Control value={item.description} onChange={(e) => editItemDescription(index, e.target.value)} type="email" placeholder="Description" />
                 </Col>
@@ -57,7 +61,7 @@ function App() {
                 </Col>
 
                 <Col xs="1">
-                  <Button className="w-100 align-top btn-danger fs-6 px-1">Remove</Button>
+                  <Button className="w-100 align-top btn-danger fs-6 px-1" onClick={() => deleteItem(index)}>Remove</Button>
                 </Col>
               </Row>
             ))
