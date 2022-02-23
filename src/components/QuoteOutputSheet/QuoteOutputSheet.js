@@ -9,21 +9,25 @@ function QuoteOutputSheet(props) {
 
   return (
     <div className="QuoteOutputSheet" data-testid="QuoteOutputSheet">
-      <p>description here</p>
 
-      {
-        props.items.map((item, index) => (
-          <Row key={index} className="mt-3">
-            <Col xs="8">
-              <p className="ts-6 text-dark text-start">{item.description}</p>
-            </Col>
+      <div className="border-1 border border-secondary p-4">
+        <p className="ts-6 text-dark text-start">description here</p>
 
-            <Col xs="4">
-              <p className="ts-6 text-dark text-start">{item.amount}</p>
-            </Col>
-          </Row>
-        ))
-      }
+        {
+          props.items.map((item, index) => (
+            <Row key={index} className="mt-0">
+              <Col xs="8">
+                <p className="ts-6 text-dark text-start">{item.description}</p>
+              </Col>
+
+              <Col xs="4">
+                <p className="ts-6 text-dark text-start">$ {item.amount}</p>
+              </Col>
+            </Row>
+          ))
+        }
+      </div>
+      
 
       <Row className="mt-5">
         <Col>
