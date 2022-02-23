@@ -58,7 +58,7 @@ function QuoteInputSheet(props) {
 
       <Row className="mt-3">
         <Col>
-          <Button className="w-100 btn-success fw-bold" onClick={addItem}>Add Item</Button>
+          <Button className="w-100 btn-primary fw-bold" onClick={addItem}>Add Item</Button>
         </Col>
       </Row>
 
@@ -66,7 +66,7 @@ function QuoteInputSheet(props) {
         <Col></Col>
 
         <Col>
-          <Button className="w-100 btn-primary fw-bold" onClick={generateQuote}>GeneRate</Button>
+          <Button className="w-100 btn-success fw-bold" onClick={generateQuote}>GeneRate</Button>
         </Col>
       </Row>
     </div>
