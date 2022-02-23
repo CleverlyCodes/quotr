@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState, useEffect} from 'react';
 import {Container, Row, Col, Form, Button} from 'react-bootstrap';
 import QuoteInputSheet from './components/QuoteInputSheet/QuoteInputSheet';
+import QuoteOutputSheet from './components/QuoteOutputSheet/QuoteOutputSheet';
 
 function App() {
   
@@ -24,11 +25,6 @@ function App() {
 
   const [isGenerated, setGenerated] = useState(false);
 
-  function generateQuote() {
-    console.log(items);
-    setGenerated(true);
-  }
-
   useEffect(() => {}, [items])
 
   return (
@@ -41,15 +37,12 @@ function App() {
             </Col>
           </Row>
 
-          <QuoteInputSheet items={items} setItems={setItems}></QuoteInputSheet>
-
-          <Row className="mt-5">
-            <Col></Col>
-
-            <Col>
-              <Button className="w-100 btn-primary fw-bold" onClick={generateQuote}>GeneRate</Button>
-            </Col>
-          </Row>
+          {
+            isGenerated ?
+              <QuoteOutputSheet items={items} setGenerated={setGenerated}></QuoteOutputSheet>
+            :
+              <QuoteInputSheet items={items} setItems={setItems} setGenerated={setGenerated}></QuoteInputSheet>
+          }
         </Container>
       </header>
     </div>

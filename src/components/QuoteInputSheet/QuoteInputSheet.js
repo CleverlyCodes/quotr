@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './QuoteInputSheet.css';
 import {Row, Col, Form, Button} from 'react-bootstrap';
 
@@ -25,6 +24,10 @@ function QuoteInputSheet(props) {
 
   function deleteItem(index) {
     props.setItems(props.items.filter((item, i) => i !== index));
+  }
+
+  function generateQuote() {
+    props.setGenerated(true);
   }
 
   return(
@@ -56,6 +59,14 @@ function QuoteInputSheet(props) {
       <Row className="mt-3">
         <Col>
           <Button className="w-100 btn-success fw-bold" onClick={addItem}>Add Item</Button>
+        </Col>
+      </Row>
+
+      <Row className="mt-5">
+        <Col></Col>
+
+        <Col>
+          <Button className="w-100 btn-primary fw-bold" onClick={generateQuote}>GeneRate</Button>
         </Col>
       </Row>
     </div>
