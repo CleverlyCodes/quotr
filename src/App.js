@@ -3,35 +3,30 @@ import logo from './logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState, useEffect} from 'react';
 import {Container, Row, Col, Form, Button} from 'react-bootstrap';
+import QuoteInputSheet from './components/QuoteInputSheet/QuoteInputSheet';
 
 function App() {
-  const [items, setItems] = useState([]);
-
-  function addItem() {
-    setItems([...items, {
+  
+  const [items, setItems] = useState([
+    {
+      description: 'Website Design',
+      amount: '10000',
+    },
+    {
+      description: 'Website Engineering',
+      amount: '20000',
+    },
+    {
       description: '',
       amount: '',
-    }]);
-  };
+    },
+  ]);
 
-  function editItemDescription(index, value) {
-    let currentItems = [...items];
-    currentItems[index].description = value;
-    setItems(currentItems);
-  }
-
-  function editItemAmount(index, value) {
-    let currentItems = [...items];
-    currentItems[index].amount = value;
-    setItems(currentItems);
-  }
-
-  function deleteItem(index) {
-    setItems(items.filter((item, i) => i !== index));
-  }
+  const [isGenerated, setGenerated] = useState(false);
 
   function generateQuote() {
-    console.log(items);  
+    console.log(items);
+    setGenerated(true);
   }
 
   useEffect(() => {}, [items])
@@ -46,35 +41,7 @@ function App() {
             </Col>
           </Row>
 
-          <Row className="mb-4">
-            <Col>
-              <textarea placeholder="service description" className="w-100 px-3 py-1 fs-6"/>
-            </Col>
-          </Row>
-
-          {
-            items.map((item, index) => (
-              <Row key={index} className="mt-3">
-                <Col xs="8">
-                  <Form.Control value={item.description} onChange={(e) => editItemDescription(index, e.target.value)} type="email" placeholder="Description" />
-                </Col>
-    
-                <Col xs="3">
-                  <Form.Control value={item.amount} onChange={(e) => editItemAmount(index, e.target.value)} type="email" placeholder="Amount" />
-                </Col>
-
-                <Col xs="1">
-                  <Button className="w-100 align-top btn-danger fs-6 px-1" onClick={() => deleteItem(index)}>Remove</Button>
-                </Col>
-              </Row>
-            ))
-          }
-
-          <Row className="mt-3">
-            <Col>
-              <Button className="w-100 btn-success fw-bold" onClick={addItem}>Add Item</Button>
-            </Col>
-          </Row>
+          <QuoteInputSheet items={items} setItems={setItems}></QuoteInputSheet>
 
           <Row className="mt-5">
             <Col></Col>
