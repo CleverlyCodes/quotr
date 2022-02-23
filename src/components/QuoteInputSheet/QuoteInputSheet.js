@@ -30,11 +30,17 @@ function QuoteInputSheet(props) {
     props.setGenerated(true);
   }
 
+  function changeDescription(value) { 
+    props.setConfig({
+      description: value,
+    });
+  }
+
   return(
     <div className="QuoteInputSheet" data-testid="QuoteInputSheet">
       <Row className="mb-4">
         <Col>
-          <textarea placeholder="service description" className="w-100 px-3 py-1 fs-6"/>
+          <textarea value={props.config.description} onChange={(e) => changeDescription(e.target.value)} placeholder="service description" className="w-100 px-3 py-1 fs-6"/>
         </Col>
       </Row>
 

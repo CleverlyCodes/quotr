@@ -11,7 +11,7 @@ function QuoteOutputSheet(props) {
     <div className="QuoteOutputSheet" data-testid="QuoteOutputSheet">
 
       <div className="border-1 border border-secondary p-4">
-        <p className="ts-6 text-dark text-start">description here</p>
+        <p className="ts-6 text-dark text-start">{props.config.description}</p>
 
         {
           props.items.map((item, index) => (

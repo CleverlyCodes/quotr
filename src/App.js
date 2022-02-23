@@ -23,6 +23,10 @@ function App() {
     },
   ]);
 
+  const [config, setConfig] = useState({
+    description: '',
+  });
+
   const [isGenerated, setGenerated] = useState(false);
 
   useEffect(() => {}, [items])
@@ -39,9 +43,9 @@ function App() {
 
           {
             isGenerated ?
-              <QuoteOutputSheet items={items} setGenerated={setGenerated}></QuoteOutputSheet>
+              <QuoteOutputSheet items={items} setGenerated={setGenerated} config={config}></QuoteOutputSheet>
             :
-              <QuoteInputSheet items={items} setItems={setItems} setGenerated={setGenerated}></QuoteInputSheet>
+              <QuoteInputSheet items={items} setItems={setItems} setGenerated={setGenerated} config={config} setConfig={setConfig}></QuoteInputSheet>
           }
         </Container>
       </header>
