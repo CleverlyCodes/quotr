@@ -21,3 +21,10 @@
 p {
   font-size: 1rem;
 }
+
+/* override styles when printing */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}

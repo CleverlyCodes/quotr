@@ -7,6 +7,10 @@ function QuoteOutputSheet(props) {
     props.setGenerated(false);
   }
 
+  function printQuote() {
+    window.print();
+  }
+
   return (
     <div className="QuoteOutputSheet" data-testid="QuoteOutputSheet">
 
@@ -40,11 +44,11 @@ function QuoteOutputSheet(props) {
 
       <Row className="mt-5">
         <Col>
-          <Button className="w-100 btn-danger fw-bold" onClick={undoQuote}>Back</Button>
+          <Button className="w-100 btn-danger fw-bold no-print" onClick={undoQuote}>Back</Button>
         </Col>
 
         <Col>
-          <Button className="w-100 btn-primary fw-bold">Print</Button>
+          <Button className="w-100 btn-primary fw-bold no-print" onClick={printQuote}>Print</Button>
         </Col>
       </Row>
     </div>
