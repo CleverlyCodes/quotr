@@ -21,7 +21,7 @@ function QuoteOutputSheet(props) {
               </Col>
 
               <Col xs="4">
-                <p className="ts-6 text-dark text-start">$ {item.amount}</p>
+                <p className="ts-6 text-dark text-start">{props.config.currency} {item.amount}</p>
               </Col>
             </Row>
           ))

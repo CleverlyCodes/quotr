@@ -33,14 +33,28 @@ function QuoteInputSheet(props) {
   function changeDescription(value) { 
     props.setConfig({
       description: value,
+      currency: props.config.currency,
+    });
+  }
+
+  function changeCurrency(value) {
+    props.setConfig({
+      description: props.config.description,
+      currency: value,
     });
   }
 
   return(
     <div className="QuoteInputSheet" data-testid="QuoteInputSheet">
-      <Row className="mb-4">
+      <Row className="mb-2">
         <Col>
           <textarea value={props.config.description} onChange={(e) => changeDescription(e.target.value)} placeholder="service description" className="w-100 px-3 py-1 fs-6"/>
+        </Col>
+      </Row>
+
+      <Row className="mb-4">
+        <Col xs="4">
+          <Form.Control value={props.config.currency} onChange={(e) => changeCurrency(e.target.value)} type="email" placeholder="Add currency symbol here..." />
         </Col>
       </Row>
 
