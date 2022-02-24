@@ -10,11 +10,11 @@ function App() {
   
   const [items, setItems] = useState([
     {
-      description: 'Website Design',
+      description: 'Website Design - Using design tools, we will create a layout and UX stylesheet complete with up to 3 revisions',
       amount: '10000',
     },
     {
-      description: 'Website Engineering',
+      description: 'Website Engineering - Using the latest tools in website engineering, we will use the latest frameworks and automations to deliver a high performing website',
       amount: '20000',
     },
     {
@@ -24,7 +24,7 @@ function App() {
   ]);
 
   const [config, setConfig] = useState({
-    description: '',
+    description: 'This is your company description. Place anything here to make your quote more appealing to your target customer',
   });
 
   const [isGenerated, setGenerated] = useState(false);
