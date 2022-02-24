@@ -6,7 +6,7 @@ function QuoteInputSheet(props) {
   function addItem() {
     props.setItems([...props.items, {
       description: '',
-      amount: '',
+      amount: 0,
     }]);
   };
 
@@ -17,8 +17,10 @@ function QuoteInputSheet(props) {
   }
 
   function editItemAmount(index, value) {
+    const realValue = value ? parseInt(value) : 0;
+
     let currentItems = [...props.items];
-    currentItems[index].amount = value;
+    currentItems[index].amount = realValue;
     props.setItems(currentItems);
   }
 
@@ -66,7 +68,7 @@ function QuoteInputSheet(props) {
             </Col>
 
             <Col xs="3">
-              <Form.Control value={item.amount} onChange={(e) => editItemAmount(index, e.target.value)} type="email" placeholder="Amount" />
+              <Form.Control type="number" value={item.amount} onChange={(e) => editItemAmount(index, e.target.value)} type="email" placeholder="Amount" />
             </Col>
 
             <Col xs="1">
@@ -75,6 +77,18 @@ function QuoteInputSheet(props) {
           </Row>
         ))
       }
+
+      <Row className="mt-3">
+        <Col xs="8">
+          <p className="ts-6 text-dark text-end">Grand Total</p>
+        </Col>
+
+        <Col xs="3">
+          <p className="ts-6 text-dark text-start">{props.total}</p>
+        </Col>
+
+        <Col xs="1"></Col>
+      </Row>
 
       <Row className="mt-3">
         <Col>

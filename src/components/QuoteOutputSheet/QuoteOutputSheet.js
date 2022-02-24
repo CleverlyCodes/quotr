@@ -26,8 +26,17 @@ function QuoteOutputSheet(props) {
             </Row>
           ))
         }
+
+        <Row className="mt-3 border-top border-dark">
+          <Col xs="8">
+            <p className="ts-6 text-dark text-start">Total</p>
+          </Col>
+
+          <Col xs="4">
+            <p className="ts-6 text-dark text-start">{props.config.currency} {props.total}</p>
+          </Col>
+        </Row>
       </div>
-      
 
       <Row className="mt-5">
         <Col>

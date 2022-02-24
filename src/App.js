@@ -11,15 +11,15 @@ function App() {
   const [items, setItems] = useState([
     {
       description: 'Website Design - Using design tools, we will create a layout and UX stylesheet complete with up to 3 revisions',
-      amount: '10000',
+      amount: 10000,
     },
     {
       description: 'Website Engineering - Using the latest tools in website engineering, we will use the latest frameworks and automations to deliver a high performing website',
-      amount: '20000',
+      amount: 20000,
     },
     {
       description: '',
-      amount: '',
+      amount: 0,
     },
   ]);
 
@@ -28,9 +28,17 @@ function App() {
     currency: '$',
   });
 
+  const [total, setTotal] = useState(0);
+
   const [isGenerated, setGenerated] = useState(false);
 
-  useEffect(() => {}, [items])
+  useEffect(() => {
+    let sum = 0;
+    items.map(item => {
+      sum+=item.amount;
+    });
+    setTotal(sum);
+  }, [items])
 
   return (
     <div className="App">
@@ -44,9 +52,9 @@ function App() {
 
           {
             isGenerated ?
-              <QuoteOutputSheet items={items} setGenerated={setGenerated} config={config}></QuoteOutputSheet>
+              <QuoteOutputSheet items={items} setGenerated={setGenerated} config={config} total={total}></QuoteOutputSheet>
             :
-              <QuoteInputSheet items={items} setItems={setItems} setGenerated={setGenerated} config={config} setConfig={setConfig}></QuoteInputSheet>
+              <QuoteInputSheet items={items} setItems={setItems} setGenerated={setGenerated} config={config} setConfig={setConfig} total={total}></QuoteInputSheet>
           }
         </Container>
       </header>
