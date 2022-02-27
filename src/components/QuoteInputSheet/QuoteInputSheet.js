@@ -1,8 +1,32 @@
 import React from 'react';
 import './QuoteInputSheet.css';
+import ls from 'local-storage'
 import {Row, Col, Form, Button} from 'react-bootstrap';
 
 function QuoteInputSheet(props) {
+  function saveTemplate() {
+    let projectList = ls.get('projectList') || [];
+
+    const result = projectList.filter(item => item.title === props.config.title);
+    console.log(result);
+    if (result.length > 0) {
+      console.log('entry already exists');
+      return;
+    }
+
+    projectList.push({
+      title: props.config.title,
+      description: props.config.description,
+      currency: props.config.currency,
+      items: props.items,
+    });
+
+    ls.set('projectList', projectList);
+
+    console.log("template saved!");
+    console.log(ls.get('projectList'));
+  }
+
   function addItem() {
     props.setItems([...props.items, {
       description: '',
@@ -114,7 +138,7 @@ function QuoteInputSheet(props) {
 
       <Row className="mt-4">
         <Col>
-          <Button className="w-100 btn-secondary fw-bold" disabled="true">Save Template</Button>
+          <Button className="w-100 btn-secondary fw-bold" onClick={saveTemplate}>Save Template</Button>
         </Col>
 
         <Col md="6">
