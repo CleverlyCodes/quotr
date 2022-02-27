@@ -5,8 +5,14 @@ import {useState, useEffect} from 'react';
 import {Container, Row, Col, Form, Button} from 'react-bootstrap';
 import QuoteInputSheet from './components/QuoteInputSheet/QuoteInputSheet';
 import QuoteOutputSheet from './components/QuoteOutputSheet/QuoteOutputSheet';
+import AlertMessage from './components/AlertMessage/AlertMessage';
 
 function App() {
+  const [alert, setAlert] = useState({
+    message: '',
+    isShown: false,
+    status: 'success',
+  });
   
   const [items, setItems] = useState([
     {
@@ -55,8 +61,10 @@ function App() {
             isGenerated ?
               <QuoteOutputSheet items={items} setGenerated={setGenerated} config={config} total={total}></QuoteOutputSheet>
             :
-              <QuoteInputSheet items={items} setItems={setItems} setGenerated={setGenerated} config={config} setConfig={setConfig} total={total}></QuoteInputSheet>
+              <QuoteInputSheet items={items} setItems={setItems} setGenerated={setGenerated} config={config} setConfig={setConfig} total={total} setAlert={setAlert}></QuoteInputSheet>
           }
+
+          <AlertMessage alert={alert}></AlertMessage>
         </Container>
       </header>
     </div>

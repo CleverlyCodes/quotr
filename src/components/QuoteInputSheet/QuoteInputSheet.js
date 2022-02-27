@@ -7,11 +7,23 @@ function QuoteInputSheet(props) {
   function saveTemplate() {
     let projectList = ls.get('projectList') || [];
 
+    const timer = setTimeout(() => {
+      props.setAlert({
+        isShown: false,
+      });
+    }, 3000);
+
     const result = projectList.filter(item => item.title === props.config.title);
     console.log(result);
     if (result.length > 0) {
-      console.log('entry already exists');
-      return;
+      props.setAlert({
+        message: "the template already exists...",
+        isShown: true,
+        status: "danger"
+      });
+      return () => {
+        clearTimeout(timer);
+      };
     }
 
     projectList.push({
@@ -23,8 +35,15 @@ function QuoteInputSheet(props) {
 
     ls.set('projectList', projectList);
 
-    console.log("template saved!");
-    console.log(ls.get('projectList'));
+    props.setAlert({
+      message: "template is saved!",
+      isShown: true,
+      status: "success"
+    });
+
+    return () => {
+      clearTimeout(timer);
+    };
   }
 
   function addItem() {
