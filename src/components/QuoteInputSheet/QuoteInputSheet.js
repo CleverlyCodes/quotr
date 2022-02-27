@@ -63,31 +63,31 @@ function QuoteInputSheet(props) {
       {
         props.items.map((item, index) => (
           <Row key={index} className="mt-3">
-            <Col xs="8">
+            <Col md="8">
               <Form.Control value={item.description} onChange={(e) => editItemDescription(index, e.target.value)} type="email" placeholder="Description" />
             </Col>
 
-            <Col xs="3">
+            <Col md="3">
               <Form.Control type="number" value={item.amount} onChange={(e) => editItemAmount(index, e.target.value)} type="email" placeholder="Amount" />
             </Col>
 
-            <Col xs="1">
-              <Button className="w-100 align-top btn-danger fs-6 px-1" onClick={() => deleteItem(index)}>Remove</Button>
+            <Col md="1">
+              <Button className="w-100 align-top btn-danger fs-6 px-1" onClick={() => deleteItem(index)}>&#10005;</Button>
             </Col>
           </Row>
         ))
       }
 
       <Row className="mt-3">
-        <Col xs="8">
+        <Col md="8" xs="6">
           <p className="ts-6 text-dark text-end">Grand Total</p>
         </Col>
 
-        <Col xs="3">
+        <Col md="3" xs="5">
           <p className="ts-6 text-dark text-start">{props.total}</p>
         </Col>
 
-        <Col xs="1"></Col>
+        <Col md="1" xs="1"></Col>
       </Row>
 
       <Row className="mt-3">
@@ -99,7 +99,7 @@ function QuoteInputSheet(props) {
       <Row className="mt-5">
         <Col></Col>
 
-        <Col>
+        <Col md="6">
           <Button className="w-100 btn-success fw-bold" onClick={generateQuote}>GeneRate</Button>
         </Col>
       </Row>
