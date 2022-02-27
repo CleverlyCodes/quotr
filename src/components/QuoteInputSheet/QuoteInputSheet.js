@@ -96,8 +96,10 @@ function QuoteInputSheet(props) {
         </Col>
       </Row>
 
-      <Row className="mt-5">
-        <Col></Col>
+      <Row className="mt-4">
+        <Col>
+          <Button className="w-100 btn-secondary fw-bold" disabled="true">Save Template</Button>
+        </Col>
 
         <Col md="6">
           <Button className="w-100 btn-success fw-bold" onClick={generateQuote}>GeneRate</Button>
