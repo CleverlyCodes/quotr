@@ -32,8 +32,17 @@ function QuoteInputSheet(props) {
     props.setGenerated(true);
   }
 
+  function changeTitle(value) {
+    props.setConfig({
+      title: value,
+      description: props.config.description,
+      currency: props.config.currency,
+    });
+  }
+
   function changeDescription(value) { 
     props.setConfig({
+      title: props.config.title,
       description: value,
       currency: props.config.currency,
     });
@@ -41,6 +50,7 @@ function QuoteInputSheet(props) {
 
   function changeCurrency(value) {
     props.setConfig({
+      title: props.config.title,
       description: props.config.description,
       currency: value,
     });
@@ -49,6 +59,12 @@ function QuoteInputSheet(props) {
   return(
     <div className="QuoteInputSheet" data-testid="QuoteInputSheet">
       <Row className="mb-2">
+        <Col>
+          <Form.Control value={props.config.title} onChange={(e) => changeTitle(e.target.value)} type="email" placeholder="Quote Title" />
+        </Col>
+      </Row>
+
+      <Row className="mb-4">
         <Col>
           <textarea value={props.config.description} onChange={(e) => changeDescription(e.target.value)} placeholder="service description" className="w-100 px-3 py-1 fs-6"/>
         </Col>

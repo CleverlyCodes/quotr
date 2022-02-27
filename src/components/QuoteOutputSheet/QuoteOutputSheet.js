@@ -15,6 +15,8 @@ function QuoteOutputSheet(props) {
     <div className="QuoteOutputSheet" data-testid="QuoteOutputSheet">
 
       <div className="border-1 border border-secondary p-4">
+        <h2 className="ts-6 text-dark text-start mb-5">{props.config.title}</h2>
+
         <p className="ts-6 text-dark text-start">{props.config.description}</p>
 
         {

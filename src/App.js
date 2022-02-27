@@ -24,6 +24,7 @@ function App() {
   ]);
 
   const [config, setConfig] = useState({
+    tite: '',
     description: 'This is your company description. Place anything here to make your quote more appealing to your target customer',
     currency: '$',
   });
