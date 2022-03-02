@@ -1,9 +1,14 @@
 import React from 'react';
 import './QuoteInputSheet.css';
-import ls from 'local-storage'
-import {Row, Col, Form, Button} from 'react-bootstrap';
+import ls from 'local-storage';
+import { useState, useEffect } from 'react';
+import { Row, Col, Form, Button, Offcanvas } from 'react-bootstrap';
 
 function QuoteInputSheet(props) {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   function saveTemplate() {
     let projectList = ls.get('projectList') || [];
 
@@ -102,6 +107,14 @@ function QuoteInputSheet(props) {
   return(
     <div className="QuoteInputSheet" data-testid="QuoteInputSheet">
       <Row className="mb-2">
+        <Col md="12">
+          <Button variant="secondary" className="float-end" onClick={handleShow}>
+            Load Template
+          </Button>
+        </Col>
+      </Row>
+
+      <Row className="mb-2">
         <Col>
           <Form.Control value={props.config.title} onChange={(e) => changeTitle(e.target.value)} type="email" placeholder="Quote Title" />
         </Col>
@@ -164,6 +177,15 @@ function QuoteInputSheet(props) {
           <Button className="w-100 btn-success fw-bold" onClick={generateQuote}>GeneRate</Button>
         </Col>
       </Row>
+
+      <Offcanvas placement="end" name="sample" backdrop="true" show={show} onHide={handleClose}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Saved Templates</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          Choose from the existing saved templates below
+        </Offcanvas.Body>
+      </Offcanvas>
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import './App.css';
 import logo from './logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useState, useEffect} from 'react';
-import {Container, Row, Col, Form, Button} from 'react-bootstrap';
+import { useState, useEffect } from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import QuoteInputSheet from './components/QuoteInputSheet/QuoteInputSheet';
 import QuoteOutputSheet from './components/QuoteOutputSheet/QuoteOutputSheet';
 import AlertMessage from './components/AlertMessage/AlertMessage';
