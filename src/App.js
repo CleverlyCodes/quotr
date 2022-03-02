@@ -45,7 +45,7 @@ function App() {
       sum+=item.amount;
     });
     setTotal(sum);
-  }, [items])
+  }, [items]);
 
   return (
     <div className="App">

@@ -1,8 +1,9 @@
 import React from 'react';
 import './QuoteInputSheet.css';
 import ls from 'local-storage';
-import { useState, useEffect } from 'react';
-import { Row, Col, Form, Button, Offcanvas } from 'react-bootstrap';
+import { useState } from 'react';
+import { Row, Col, Form, Button } from 'react-bootstrap';
+import Drawer from '../Drawer/Drawer';
 
 function QuoteInputSheet(props) {
   const [show, setShow] = useState(false);
@@ -10,7 +11,7 @@ function QuoteInputSheet(props) {
   const handleShow = () => setShow(true);
 
   function saveTemplate() {
-    let projectList = ls.get('projectList') || [];
+    let projectList = ls.get('projectList') | [];
 
     const timer = setTimeout(() => {
       props.setAlert({
@@ -104,7 +105,7 @@ function QuoteInputSheet(props) {
     });
   }
 
-  return(
+  return (
     <div className="QuoteInputSheet" data-testid="QuoteInputSheet">
       <Row className="mb-2">
         <Col md="12">
@@ -178,14 +179,7 @@ function QuoteInputSheet(props) {
         </Col>
       </Row>
 
-      <Offcanvas placement="end" name="sample" backdrop="true" show={show} onHide={handleClose}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Saved Templates</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          Choose from the existing saved templates below
-        </Offcanvas.Body>
-      </Offcanvas>
+      <Drawer handleClose={handleClose} show={show}></Drawer>
     </div>
   );
 }
