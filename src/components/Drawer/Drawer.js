@@ -8,8 +8,8 @@ import { Row, Col, Offcanvas, Button } from 'react-bootstrap';
 function Drawer (props) {
   const [projectList, setProjectList] = useState(ls.get('projectList'));
 
-  function loadTemplate(index) {
-    console.log(index);
+  function loadTemplate(item) {
+    props.setTemplate(item);
   }  
 
   return (
@@ -23,7 +23,7 @@ function Drawer (props) {
           props.projectList.map((item, index) => (
             <Row key={index} className="mt-3">
               <Col>
-                <Button className="text-dark btn-light w-100 text-start" onClick={() => loadTemplate(index)}>{item.title}</Button>
+                <Button className="text-dark btn-light w-100 text-start" onClick={() => loadTemplate(item)}>{item.title}</Button>
               </Col>
             </Row>
           ))

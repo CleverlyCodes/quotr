@@ -87,6 +87,16 @@ function QuoteInputSheet(props) {
     props.setGenerated(true);
   }
 
+  function setTemplate(template) {
+    props.setConfig({
+      title: template.title,
+      description: template.description,
+      currency: template.currency,
+    });
+
+    props.setItems(template.items);
+  }
+
   function changeTitle(value) {
     props.setConfig({
       title: value,
@@ -185,7 +195,7 @@ function QuoteInputSheet(props) {
         </Col>
       </Row>
 
-      <Drawer projectList={projectList} show={show} handleClose={handleClose}></Drawer>
+      <Drawer projectList={projectList} show={show} setTemplate={setTemplate} handleClose={handleClose}></Drawer>
     </div>
   );
 }
