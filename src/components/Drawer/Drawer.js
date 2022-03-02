@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import ls from 'local-storage';
 import './Drawer.css';
-import { Row, Col, Offcanvas } from 'react-bootstrap';
+import { Row, Col, Offcanvas, Button } from 'react-bootstrap';
 
 function Drawer (props) {
   const [projectList, setProjectList] = useState(ls.get('projectList'));
 
-  // useEffect(() => {
-  //   // setProjectList(projects);
-  // }, [projectList]);
-  
+  function loadTemplate(index) {
+    console.log(index);
+  }  
+
   return (
     <Offcanvas placement="end" name="sample" backdrop="true" show={props.show} onHide={props.handleClose}>
       <Offcanvas.Header closeButton>
@@ -23,7 +23,7 @@ function Drawer (props) {
           props.projectList.map((item, index) => (
             <Row key={index} className="mt-3">
               <Col>
-                <label className="text-dark">{item.title}</label>
+                <Button className="text-dark btn-light w-100 text-start" onClick={() => loadTemplate(index)}>{item.title}</Button>
               </Col>
             </Row>
           ))
