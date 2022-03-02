@@ -22,7 +22,7 @@ function QuoteInputSheet(props) {
     }, 3000);
 
     const result = projectList.filter(item => item.title === props.config.title);
-    console.log(result);
+
     if (result.length > 0) {
       props.setAlert({
         message: "the template already exists...",
@@ -44,8 +44,6 @@ function QuoteInputSheet(props) {
     setProjectList(projects);
 
     ls.set('projectList', projectList);
-
-    console.log(projectList);
 
     props.setAlert({
       message: "template is saved!",
