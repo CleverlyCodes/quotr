@@ -8,9 +8,9 @@ import { Row, Col, Offcanvas } from 'react-bootstrap';
 function Drawer (props) {
   const [projectList, setProjectList] = useState(ls.get('projectList'));
 
-  useEffect(() => {
-    // setProjectList(projects);
-  }, [projectList]);
+  // useEffect(() => {
+  //   // setProjectList(projects);
+  // }, [projectList]);
   
   return (
     <Offcanvas placement="end" name="sample" backdrop="true" show={props.show} onHide={props.handleClose}>
@@ -20,7 +20,7 @@ function Drawer (props) {
 
       <Offcanvas.Body>
         {
-          projectList.map((item, index) => (
+          props.projectList.map((item, index) => (
             <Row key={index} className="mt-3">
               <Col>
                 <label className="text-dark">{item.title}</label>

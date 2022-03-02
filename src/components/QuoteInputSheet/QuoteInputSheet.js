@@ -1,17 +1,19 @@
 import React from 'react';
 import './QuoteInputSheet.css';
-import ls from 'local-storage';
+import ls from 'local-storage'
 import { useState } from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
-import Drawer from '../Drawer/Drawer';
+import Drawer from '../Drawer/Drawer'
 
 function QuoteInputSheet(props) {
+  const [projectList, setProjectList] = useState(ls.get('projectList'));
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   function saveTemplate() {
-    let projectList = ls.get('projectList') | [];
+    let projects = projectList;
 
     const timer = setTimeout(() => {
       props.setAlert({
@@ -32,14 +34,18 @@ function QuoteInputSheet(props) {
       };
     }
 
-    projectList.push({
+    projects.push({
       title: props.config.title,
       description: props.config.description,
       currency: props.config.currency,
       items: props.items,
     });
 
+    setProjectList(projects);
+
     ls.set('projectList', projectList);
+
+    console.log(projectList);
 
     props.setAlert({
       message: "template is saved!",
@@ -105,11 +111,11 @@ function QuoteInputSheet(props) {
     });
   }
 
-  return (
+  return(
     <div className="QuoteInputSheet" data-testid="QuoteInputSheet">
       <Row className="mb-2">
         <Col md="12">
-          <Button variant="secondary" className="float-end" onClick={handleShow}>
+          <Button variant="primary" onClick={handleShow} className="float-end">
             Load Template
           </Button>
         </Col>
@@ -179,7 +185,7 @@ function QuoteInputSheet(props) {
         </Col>
       </Row>
 
-      <Drawer handleClose={handleClose} show={show}></Drawer>
+      <Drawer projectList={projectList} show={show} handleClose={handleClose}></Drawer>
     </div>
   );
 }
