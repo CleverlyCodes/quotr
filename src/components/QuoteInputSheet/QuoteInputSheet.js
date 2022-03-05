@@ -150,7 +150,7 @@ function QuoteInputSheet(props) {
 
       <Row className="mb-2">
         <Col>
-          <Form.Control value={props.config.title} onChange={(e) => changeTitle(e.target.value)} type="email" placeholder="Quote Title" />
+          <Form.Control value={props.config.title} onChange={(e) => changeTitle(e.target.value)} placeholder="Quote Title" />
         </Col>
       </Row>
 
@@ -172,7 +172,7 @@ function QuoteInputSheet(props) {
 
       <Row className="mb-4">
         <Col xs="4">
-          <Form.Control value={props.config.currency} onChange={(e) => changeCurrency(e.target.value)} type="email" placeholder="Add currency symbol here..." />
+          <Form.Control value={props.config.currency} onChange={(e) => changeCurrency(e.target.value)} placeholder="Add currency symbol here..." />
         </Col>
       </Row>
 
@@ -180,11 +180,11 @@ function QuoteInputSheet(props) {
         props.items.map((item, index) => (
           <Row key={index} className="mt-3">
             <Col md="8">
-              <Form.Control value={item.description} onChange={(e) => editItemDescription(index, e.target.value)} type="email" placeholder="Description" />
+              <Form.Control value={item.description} onChange={(e) => editItemDescription(index, e.target.value)} placeholder="Description" />
             </Col>
 
             <Col md="3">
-              <Form.Control type="number" value={item.amount} onChange={(e) => editItemAmount(index, e.target.value)} type="email" placeholder="Amount" />
+              <Form.Control type="number" value={item.amount} onChange={(e) => editItemAmount(index, e.target.value)} placeholder="Amount" />
             </Col>
 
             <Col md="1">
