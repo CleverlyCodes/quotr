@@ -39,6 +39,7 @@ function QuoteInputSheet(props) {
       description: props.config.description,
       currency: props.config.currency,
       items: props.items,
+      tax: props.tax,
       preparedByName: props.config.preparedByName,
       preparedByPosition: props.config.preparedByPosition,
     });
@@ -88,10 +89,13 @@ function QuoteInputSheet(props) {
   }
 
   function setTemplate(template) {
+    const updatedTax = template.tax || 0;
+
     props.setConfig({
       title: template.title,
       description: template.description,
       currency: template.currency,
+      tax: updatedTax,
       preparedByName: template.preparedByName,
       preparedByPosition: template.preparedByPosition,
     });
