@@ -33,6 +33,8 @@ function App() {
     tite: '',
     description: 'This is your company description. Place anything here to make your quote more appealing to your target customer',
     currency: '$',
+    preparedByName: '',
+    preparedByPosition: '',
   });
 
   const [total, setTotal] = useState(0);

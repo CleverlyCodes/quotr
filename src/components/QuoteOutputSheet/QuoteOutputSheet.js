@@ -49,8 +49,9 @@ function QuoteOutputSheet(props) {
           </Col>
 
           <Col xs="4" className="border-top border-dark">
-            <h6 className="ts-6 text-dark mb-0 mt-2 fw-bolder">Cleverly Codes</h6>
-            <h6 className="ts-6 text-dark">Manager</h6>
+            <h6 className="ts-6 text-dark mb-0 mt-2 fw-bolder">{props.config.preparedByName}</h6>
+
+            <h6 className="ts-6 text-dark">{props.config.preparedByPosition}</h6>
           </Col>
 
           <Col xs="4"></Col>

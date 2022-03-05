@@ -100,6 +100,8 @@ function QuoteInputSheet(props) {
       title: value,
       description: props.config.description,
       currency: props.config.currency,
+      preparedByName: props.config.preparedByName,
+      preparedByPosition: props.config.preparedByPosition,
     });
   }
 
@@ -108,6 +110,8 @@ function QuoteInputSheet(props) {
       title: props.config.title,
       description: value,
       currency: props.config.currency,
+      preparedByName: props.config.preparedByName,
+      preparedByPosition: props.config.preparedByPosition,
     });
   }
 
@@ -116,6 +120,28 @@ function QuoteInputSheet(props) {
       title: props.config.title,
       description: props.config.description,
       currency: value,
+      preparedByName: props.config.preparedByName,
+      preparedByPosition: props.config.preparedByPosition,
+    });
+  }
+
+  function changePreparedByName(value) {
+    props.setConfig({
+      title: props.config.title,
+      description: props.config.description,
+      currency: props.config.currency,
+      preparedByName: value,
+      preparedByPosition: props.config.preparedByPosition,
+    });
+  }
+
+  function changePreparedByPosition(value) {
+    props.setConfig({
+      title: props.config.title,
+      description: props.config.description,
+      currency: props.config.currency,
+      preparedByName: props.config.preparedByName,
+      preparedByPosition: value,
     });
   }
 
@@ -138,6 +164,16 @@ function QuoteInputSheet(props) {
       <Row className="mb-4">
         <Col>
           <textarea value={props.config.description} onChange={(e) => changeDescription(e.target.value)} placeholder="service description" className="w-100 px-3 py-1 fs-6"/>
+        </Col>
+      </Row>
+
+      <Row className="mb-2">
+        <Col>
+          <Form.Control value={props.config.preparedByName} onChange={(e) => changePreparedByName(e.target.value)} placeholder="Full Name" />
+        </Col>
+
+        <Col>
+          <Form.Control value={props.config.preparedByPosition} onChange={(e) => changePreparedByPosition(e.target.value)} placeholder="Your Position" />
         </Col>
       </Row>
 
