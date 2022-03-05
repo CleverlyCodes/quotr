@@ -56,7 +56,7 @@ function App() {
     setTotal(sum);
     setTaxTotal(tax);
     setGrandTotal(grandTotal);
-  }, [items]);
+  }, [items, config.tax]);
 
   return (
     <div className="App">

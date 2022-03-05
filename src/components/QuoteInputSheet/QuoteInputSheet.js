@@ -124,6 +124,15 @@ function QuoteInputSheet(props) {
     });
   }
 
+  function changeTax(value) {
+    const floatValue = parseFloat(value);
+
+    props.setConfig({
+      ...props.config,
+      tax: floatValue,
+    });
+  }
+
   function changePreparedByName(value) {
     props.setConfig({
       ...props.config,
@@ -171,8 +180,11 @@ function QuoteInputSheet(props) {
       </Row>
 
       <Row className="mb-4">
-        <Col xs="4">
-          <Form.Control value={props.config.currency} onChange={(e) => changeCurrency(e.target.value)} placeholder="Add currency symbol here..." />
+        <Col xs="2">
+          <Form.Control value={props.config.currency} onChange={(e) => changeCurrency(e.target.value)} title="Currency" placeholder="Currency" />
+        </Col>
+        <Col xs="3">
+          <Form.Control value={props.config.tax} onChange={(e) => changeTax(e.target.value)} type="number" step="0.01" title="Tax in percent" placeholder="Tax in percent..." />
         </Col>
       </Row>
 
