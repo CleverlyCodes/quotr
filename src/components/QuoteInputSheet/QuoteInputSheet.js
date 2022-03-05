@@ -39,6 +39,8 @@ function QuoteInputSheet(props) {
       description: props.config.description,
       currency: props.config.currency,
       items: props.items,
+      preparedByName: props.config.preparedByName,
+      preparedByPosition: props.config.preparedByPosition,
     });
 
     setProjectList(projects);
@@ -90,6 +92,8 @@ function QuoteInputSheet(props) {
       title: template.title,
       description: template.description,
       currency: template.currency,
+      preparedByName: template.preparedByName,
+      preparedByPosition: template.preparedByPosition,
     });
 
     props.setItems(template.items);
