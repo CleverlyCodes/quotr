@@ -39,6 +39,9 @@ function QuoteInputSheet(props) {
       description: props.config.description,
       currency: props.config.currency,
       items: props.items,
+      tax: props.tax,
+      preparedByName: props.config.preparedByName,
+      preparedByPosition: props.config.preparedByPosition,
     });
 
     setProjectList(projects);
@@ -86,10 +89,15 @@ function QuoteInputSheet(props) {
   }
 
   function setTemplate(template) {
+    const updatedTax = template.tax || 0;
+
     props.setConfig({
       title: template.title,
       description: template.description,
       currency: template.currency,
+      tax: updatedTax,
+      preparedByName: template.preparedByName,
+      preparedByPosition: template.preparedByPosition,
     });
 
     props.setItems(template.items);
@@ -97,25 +105,45 @@ function QuoteInputSheet(props) {
 
   function changeTitle(value) {
     props.setConfig({
+      ...props.config,
       title: value,
-      description: props.config.description,
-      currency: props.config.currency,
     });
   }
 
-  function changeDescription(value) { 
+  function changeDescription(value) {
     props.setConfig({
-      title: props.config.title,
+      ...props.config,
       description: value,
-      currency: props.config.currency,
     });
   }
 
   function changeCurrency(value) {
     props.setConfig({
-      title: props.config.title,
-      description: props.config.description,
+      ...props.config,
       currency: value,
+    });
+  }
+
+  function changeTax(value) {
+    const floatValue = parseFloat(value);
+
+    props.setConfig({
+      ...props.config,
+      tax: floatValue,
+    });
+  }
+
+  function changePreparedByName(value) {
+    props.setConfig({
+      ...props.config,
+      preparedByName: value,
+    });
+  }
+
+  function changePreparedByPosition(value) {
+    props.setConfig({
+      ...props.config,
+      preparedByPosition: value,
     });
   }
 
@@ -131,7 +159,7 @@ function QuoteInputSheet(props) {
 
       <Row className="mb-2">
         <Col>
-          <Form.Control value={props.config.title} onChange={(e) => changeTitle(e.target.value)} type="email" placeholder="Quote Title" />
+          <Form.Control value={props.config.title} onChange={(e) => changeTitle(e.target.value)} placeholder="Quote Title" />
         </Col>
       </Row>
 
@@ -141,9 +169,22 @@ function QuoteInputSheet(props) {
         </Col>
       </Row>
 
+      <Row className="mb-2">
+        <Col>
+          <Form.Control value={props.config.preparedByName} onChange={(e) => changePreparedByName(e.target.value)} placeholder="Full Name" />
+        </Col>
+
+        <Col>
+          <Form.Control value={props.config.preparedByPosition} onChange={(e) => changePreparedByPosition(e.target.value)} placeholder="Your Position" />
+        </Col>
+      </Row>
+
       <Row className="mb-4">
-        <Col xs="4">
-          <Form.Control value={props.config.currency} onChange={(e) => changeCurrency(e.target.value)} type="email" placeholder="Add currency symbol here..." />
+        <Col xs="2">
+          <Form.Control value={props.config.currency} onChange={(e) => changeCurrency(e.target.value)} title="Currency" placeholder="Currency" />
+        </Col>
+        <Col xs="3">
+          <Form.Control value={props.config.tax} onChange={(e) => changeTax(e.target.value)} type="number" step="0.01" title="Tax in percent" placeholder="Tax in percent..." />
         </Col>
       </Row>
 
@@ -151,11 +192,11 @@ function QuoteInputSheet(props) {
         props.items.map((item, index) => (
           <Row key={index} className="mt-3">
             <Col md="8">
-              <Form.Control value={item.description} onChange={(e) => editItemDescription(index, e.target.value)} type="email" placeholder="Description" />
+              <Form.Control value={item.description} onChange={(e) => editItemDescription(index, e.target.value)} placeholder="Description" />
             </Col>
 
             <Col md="3">
-              <Form.Control type="number" value={item.amount} onChange={(e) => editItemAmount(index, e.target.value)} type="email" placeholder="Amount" />
+              <Form.Control type="number" value={item.amount} onChange={(e) => editItemAmount(index, e.target.value)} placeholder="Amount" />
             </Col>
 
             <Col md="1">
@@ -167,11 +208,35 @@ function QuoteInputSheet(props) {
 
       <Row className="mt-3">
         <Col md="8" xs="6">
-          <p className="ts-6 text-dark text-end">Grand Total</p>
+          <p className="ts-6 text-dark text-end mb-0">Subtotal</p>
         </Col>
 
         <Col md="3" xs="5">
-          <p className="ts-6 text-dark text-start">{props.total}</p>
+          <p className="ts-6 text-dark text-start">{props.config.currency} {props.total}</p>
+        </Col>
+
+        <Col md="1" xs="1"></Col>
+      </Row>
+
+      <Row className="mt-0">
+        <Col md="8" xs="6">
+          <p className="ts-6 text-dark text-end mb-0">Tax</p>
+        </Col>
+
+        <Col md="3" xs="5">
+          <p className="ts-6 text-dark text-start">{props.config.currency} {props.taxTotal}</p>
+        </Col>
+
+        <Col md="1" xs="1"></Col>
+      </Row>
+
+      <Row className="mt-0">
+        <Col md="8" xs="6">
+          <p className="ts-6 text-dark text-end mb-0">Grand Total</p>
+        </Col>
+
+        <Col md="3" xs="5">
+          <p className="ts-6 text-dark text-start">{props.config.currency} {props.grandTotal}</p>
         </Col>
 
         <Col md="1" xs="1"></Col>
