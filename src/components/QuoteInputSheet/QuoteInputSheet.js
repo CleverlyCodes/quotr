@@ -212,7 +212,7 @@ function QuoteInputSheet(props) {
         </Col>
 
         <Col md="3" xs="5">
-          <p className="ts-6 text-dark text-start">{props.total}</p>
+          <p className="ts-6 text-dark text-start">{props.config.currency} {props.total}</p>
         </Col>
 
         <Col md="1" xs="1"></Col>
@@ -224,7 +224,7 @@ function QuoteInputSheet(props) {
         </Col>
 
         <Col md="3" xs="5">
-          <p className="ts-6 text-dark text-start">{props.taxTotal}</p>
+          <p className="ts-6 text-dark text-start">{props.config.currency} {props.taxTotal}</p>
         </Col>
 
         <Col md="1" xs="1"></Col>
@@ -236,7 +236,7 @@ function QuoteInputSheet(props) {
         </Col>
 
         <Col md="3" xs="5">
-          <p className="ts-6 text-dark text-start">{props.grandTotal}</p>
+          <p className="ts-6 text-dark text-start">{props.config.currency} {props.grandTotal}</p>
         </Col>
 
         <Col md="1" xs="1"></Col>
