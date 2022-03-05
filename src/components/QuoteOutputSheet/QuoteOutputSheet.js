@@ -14,10 +14,10 @@ function QuoteOutputSheet(props) {
   return (
     <div className="QuoteOutputSheet" data-testid="QuoteOutputSheet">
 
-      <div className="border-1 border border-secondary p-4">
-        <h2 className="ts-6 text-dark text-start mb-5">{props.config.title}</h2>
+      <div className="border-1 border border-secondary p-4 px-5 py-5">
+        <h2 className="ts-6 text-dark text-start mb-4">{props.config.title}</h2>
 
-        <p className="ts-6 text-dark text-start">{props.config.description}</p>
+        <p className="ts-6 text-dark text-start mb-5">{props.config.description}</p>
 
         {
           props.items.map((item, index) => (
@@ -33,14 +33,32 @@ function QuoteOutputSheet(props) {
           ))
         }
 
-        <Row className="mt-3 border-top border-dark">
+        <Row className="mt-3 mb-5 pb-4 section computation pt-2">
           <Col xs="8">
-            <p className="ts-6 text-dark text-start">Total</p>
+            <h5 className="ts-4 text-dark text-start fw-bolder">Total</h5>
           </Col>
 
           <Col xs="4">
-            <p className="ts-6 text-dark text-start">{props.config.currency} {props.total}</p>
+            <h5 className="ts-4 text-dark text-start fw-bolder">{props.config.currency} {props.total}</h5>
           </Col>
+        </Row>
+
+        <Row className="mt-5 pb-3">
+          <Col xs="12" className="px-0">
+            <p className="ts-6 text-dark float-start mb-5">Prepared by:</p>
+          </Col>
+
+          <Col xs="4" className="border-top border-dark">
+            <h6 className="ts-6 text-dark mb-0 mt-2 fw-bolder">Cleverly Codes</h6>
+            <h6 className="ts-6 text-dark">Manager</h6>
+          </Col>
+
+          <Col xs="4"></Col>
+          
+
+          {/* <Col xs="4" className="border-top border-dark">
+            <p className="ts-6 text-dark text-start">Client</p>
+          </Col> */}
         </Row>
       </div>
 
