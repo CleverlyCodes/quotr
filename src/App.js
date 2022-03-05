@@ -33,11 +33,14 @@ function App() {
     tite: '',
     description: 'This is your company description. Place anything here to make your quote more appealing to your target customer',
     currency: '$',
+    tax: 0.03,
     preparedByName: '',
     preparedByPosition: '',
   });
 
+  const [taxTotal, setTaxTotal] = useState(0.0); 
   const [total, setTotal] = useState(0);
+  const [grandTotal, setGrandTotal] = useState(0);
 
   const [isGenerated, setGenerated] = useState(false);
 
@@ -46,7 +49,13 @@ function App() {
     items.map(item => {
       sum+=item.amount;
     });
+
+    let tax = sum * config.tax;
+    const grandTotal = sum + tax;
+
     setTotal(sum);
+    setTaxTotal(tax);
+    setGrandTotal(grandTotal);
   }, [items]);
 
   return (
@@ -63,7 +72,7 @@ function App() {
             isGenerated ?
               <QuoteOutputSheet items={items} setGenerated={setGenerated} config={config} total={total}></QuoteOutputSheet>
             :
-              <QuoteInputSheet items={items} setItems={setItems} setGenerated={setGenerated} config={config} setConfig={setConfig} total={total} setAlert={setAlert}></QuoteInputSheet>
+              <QuoteInputSheet items={items} setItems={setItems} setGenerated={setGenerated} config={config} setConfig={setConfig} total={total} taxTotal={taxTotal} grandTotal={grandTotal} setAlert={setAlert}></QuoteInputSheet>
           }
 
           <AlertMessage alert={alert}></AlertMessage>

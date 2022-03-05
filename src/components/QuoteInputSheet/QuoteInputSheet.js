@@ -207,11 +207,35 @@ function QuoteInputSheet(props) {
 
       <Row className="mt-3">
         <Col md="8" xs="6">
-          <p className="ts-6 text-dark text-end">Grand Total</p>
+          <p className="ts-6 text-dark text-end mb-0">Subtotal</p>
         </Col>
 
         <Col md="3" xs="5">
           <p className="ts-6 text-dark text-start">{props.total}</p>
+        </Col>
+
+        <Col md="1" xs="1"></Col>
+      </Row>
+
+      <Row className="mt-0">
+        <Col md="8" xs="6">
+          <p className="ts-6 text-dark text-end mb-0">Tax</p>
+        </Col>
+
+        <Col md="3" xs="5">
+          <p className="ts-6 text-dark text-start">{props.taxTotal}</p>
+        </Col>
+
+        <Col md="1" xs="1"></Col>
+      </Row>
+
+      <Row className="mt-0">
+        <Col md="8" xs="6">
+          <p className="ts-6 text-dark text-end mb-0">Grand Total</p>
+        </Col>
+
+        <Col md="3" xs="5">
+          <p className="ts-6 text-dark text-start">{props.grandTotal}</p>
         </Col>
 
         <Col md="1" xs="1"></Col>
