@@ -101,50 +101,35 @@ function QuoteInputSheet(props) {
 
   function changeTitle(value) {
     props.setConfig({
+      ...props.config,
       title: value,
-      description: props.config.description,
-      currency: props.config.currency,
-      preparedByName: props.config.preparedByName,
-      preparedByPosition: props.config.preparedByPosition,
     });
   }
 
-  function changeDescription(value) { 
+  function changeDescription(value) {
     props.setConfig({
-      title: props.config.title,
+      ...props.config,
       description: value,
-      currency: props.config.currency,
-      preparedByName: props.config.preparedByName,
-      preparedByPosition: props.config.preparedByPosition,
     });
   }
 
   function changeCurrency(value) {
     props.setConfig({
-      title: props.config.title,
-      description: props.config.description,
+      ...props.config,
       currency: value,
-      preparedByName: props.config.preparedByName,
-      preparedByPosition: props.config.preparedByPosition,
     });
   }
 
   function changePreparedByName(value) {
     props.setConfig({
-      title: props.config.title,
-      description: props.config.description,
-      currency: props.config.currency,
+      ...props.config,
       preparedByName: value,
-      preparedByPosition: props.config.preparedByPosition,
     });
   }
 
   function changePreparedByPosition(value) {
     props.setConfig({
-      title: props.config.title,
-      description: props.config.description,
-      currency: props.config.currency,
-      preparedByName: props.config.preparedByName,
+      ...props.config,
       preparedByPosition: value,
     });
   }
