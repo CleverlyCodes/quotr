@@ -1,11 +1,19 @@
 import React from 'react';
 import './QuoteInputSheet.css';
 import ls from 'local-storage'
-import {Row, Col, Form, Button} from 'react-bootstrap';
+import { useState } from 'react';
+import { Row, Col, Form, Button } from 'react-bootstrap';
+import Drawer from '../Drawer/Drawer'
 
 function QuoteInputSheet(props) {
+  const [projectList, setProjectList] = useState(ls.get('projectList'));
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   function saveTemplate() {
-    let projectList = ls.get('projectList') || [];
+    let projects = projectList;
 
     const timer = setTimeout(() => {
       props.setAlert({
@@ -14,7 +22,7 @@ function QuoteInputSheet(props) {
     }, 3000);
 
     const result = projectList.filter(item => item.title === props.config.title);
-    console.log(result);
+
     if (result.length > 0) {
       props.setAlert({
         message: "the template already exists...",
@@ -26,12 +34,14 @@ function QuoteInputSheet(props) {
       };
     }
 
-    projectList.push({
+    projects.push({
       title: props.config.title,
       description: props.config.description,
       currency: props.config.currency,
       items: props.items,
     });
+
+    setProjectList(projects);
 
     ls.set('projectList', projectList);
 
@@ -75,6 +85,16 @@ function QuoteInputSheet(props) {
     props.setGenerated(true);
   }
 
+  function setTemplate(template) {
+    props.setConfig({
+      title: template.title,
+      description: template.description,
+      currency: template.currency,
+    });
+
+    props.setItems(template.items);
+  }
+
   function changeTitle(value) {
     props.setConfig({
       title: value,
@@ -101,6 +121,14 @@ function QuoteInputSheet(props) {
 
   return(
     <div className="QuoteInputSheet" data-testid="QuoteInputSheet">
+      <Row className="mb-2">
+        <Col md="12">
+          <Button variant="primary" onClick={handleShow} className="float-end">
+            Load Template
+          </Button>
+        </Col>
+      </Row>
+
       <Row className="mb-2">
         <Col>
           <Form.Control value={props.config.title} onChange={(e) => changeTitle(e.target.value)} type="email" placeholder="Quote Title" />
@@ -164,6 +192,8 @@ function QuoteInputSheet(props) {
           <Button className="w-100 btn-success fw-bold" onClick={generateQuote}>GeneRate</Button>
         </Col>
       </Row>
+
+      <Drawer projectList={projectList} show={show} setTemplate={setTemplate} handleClose={handleClose}></Drawer>
     </div>
   );
 }
