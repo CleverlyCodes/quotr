@@ -53,7 +53,7 @@ function App() {
     <div className="App">
       <header className="App-header py-5"> 
         <Container>
-          <Row className="mb-5">
+          <Row className="mb-5 no-print">
             <Col>
               <img src={logo} className="App-logo" alt="logo" />
             </Col>
