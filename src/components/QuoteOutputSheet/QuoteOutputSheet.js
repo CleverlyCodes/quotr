@@ -35,11 +35,27 @@ function QuoteOutputSheet(props) {
 
         <Row className="mt-3 mb-5 pb-4 section computation pt-2">
           <Col xs="8">
-            <h5 className="ts-4 text-dark text-start fw-bolder">Total</h5>
+            <h6 className="ts-4 text-dark text-start fw-bolder">Subtotal</h6>
           </Col>
 
           <Col xs="4">
-            <h5 className="ts-4 text-dark text-start fw-bolder">{props.config.currency} {props.total}</h5>
+            <h6 className="ts-4 text-dark text-start fw-bolder">{props.config.currency} {props.total}</h6>
+          </Col>
+
+          <Col xs="8">
+            <h6 className="ts-4 text-dark text-start fw-bold">Tax</h6>
+          </Col>
+
+          <Col xs="4">
+            <h6 className="ts-4 text-dark text-start">{props.config.currency} {props.taxTotal}</h6>
+          </Col>
+
+          <Col xs="8">
+            <h5 className="ts-4 text-dark text-start fw-bolder">Grand Total</h5>
+          </Col>
+
+          <Col xs="4">
+            <h5 className="ts-4 text-dark text-start fw-bolder">{props.config.currency} {props.grandTotal}</h5>
           </Col>
         </Row>
 

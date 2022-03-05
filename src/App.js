@@ -70,7 +70,7 @@ function App() {
 
           {
             isGenerated ?
-              <QuoteOutputSheet items={items} setGenerated={setGenerated} config={config} total={total}></QuoteOutputSheet>
+              <QuoteOutputSheet items={items} setGenerated={setGenerated} config={config} total={total} taxTotal={taxTotal} grandTotal={grandTotal}></QuoteOutputSheet>
             :
               <QuoteInputSheet items={items} setItems={setItems} setGenerated={setGenerated} config={config} setConfig={setConfig} total={total} taxTotal={taxTotal} grandTotal={grandTotal} setAlert={setAlert}></QuoteInputSheet>
           }
