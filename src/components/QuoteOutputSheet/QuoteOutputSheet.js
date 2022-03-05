@@ -14,7 +14,7 @@ function QuoteOutputSheet(props) {
   return (
     <div className="QuoteOutputSheet" data-testid="QuoteOutputSheet">
 
-      <div className="border-1 border border-secondary p-4 px-5 py-5">
+      <div className="output-form p-4 px-5 py-5">
         <h2 className="ts-6 text-dark text-start mb-4">{props.config.title}</h2>
 
         <p className="ts-6 text-dark text-start mb-5">{props.config.description}</p>

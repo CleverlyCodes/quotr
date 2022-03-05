@@ -1,5 +1,20 @@
 .QuoteOutputSheet {}
 
+.output-form {
+    border: 1px solid #6c757d;
+}
+
 .computation {
     border-top: 1px dashed black;
+}
+
+/* override styles when printing */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    .output-form {
+        border: 0px !important;
+    }
 }
